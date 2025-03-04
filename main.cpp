@@ -25,6 +25,12 @@ public:
         while (temp->next) temp = temp->next;
         temp->next = newNode;
     }
+    Node* getHead() {
+        return head;
+    }
+    void modifyHead(Node* newhead) {
+        head = newhead;
+    }
 
     void printList() {
         Node* temp = head;
@@ -35,9 +41,19 @@ public:
         std::cout << "NULL" << std::endl;
     }
 
-    void reverseLinkedList() {
+    Node* reverseLinkedList(Node* starter) {
         // TODO: Students will implement this function
         std::cout << "Implement reverseLinkedList()" << std::endl;
+        if (starter->next != nullptr) {
+            Node* child = reverseLinkedList(starter->next);
+            if (child == nullptr) {
+                return starter;
+            }
+            starter->next->next = starter;
+            starter->next = NULL;
+            return child;
+        }
+        return starter;
     }
 };
 
@@ -49,7 +65,7 @@ int main() {
     list.printList();
 
     // Student should implement reverseLinkedList()
-    list.reverseLinkedList();
+    list.modifyHead(list.reverseLinkedList(list.getHead()));
     list.printList();
 
     return 0;
