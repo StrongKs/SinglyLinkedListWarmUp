@@ -11,6 +11,16 @@ public:
 class SinglyLinkedList {
 private:
     Node* head;
+    Node* recucrsiveFunction(Node* p) {
+        Node* q = p->next;
+        if (q->next) {
+            Node* newNode = q->next;
+            q->next = p;
+            return recucrsiveFunction(q);
+        }else {
+            return nullptr;
+        }
+    }
 
 public:
     SinglyLinkedList() : head(nullptr) {}
@@ -36,8 +46,17 @@ public:
     }
 
     void reverseLinkedList() {
-        // TODO: Students will implement this function
-        std::cout << "Implement reverseLinkedList()" << std::endl;
+        Node* a = head;
+        Node* b = a->next;
+        a->next = nullptr;
+        while (b->next) {
+            Node* temp = b->next;
+            b->next = a;
+            a = b;
+            b = temp;
+        }
+        b->next = a;
+        head = b;
     }
 };
 
