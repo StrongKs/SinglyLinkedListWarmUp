@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 class Node {
 public:
@@ -36,7 +37,17 @@ public:
     }
 
     void reverseLinkedList() {
-        // TODO: Students will implement this function
+        Node* current = head;
+        std::vector<int> temp;
+        while (current) {
+          temp.push_back(current->data);
+          current = current->next;
+        }
+        current = head;
+        for (int i = temp.size() - 1; i >= 0; i--) {
+          current->data = temp[i];
+          current = current->next;
+        }
         std::cout << "Implement reverseLinkedList()" << std::endl;
     }
 };
