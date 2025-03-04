@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 class Node {
 public:
@@ -35,9 +36,18 @@ public:
         std::cout << "NULL" << std::endl;
     }
 
-    void reverseLinkedList() {
-        // TODO: Students will implement this function
-        std::cout << "Implement reverseLinkedList()" << std::endl;
+    SinglyLinkedList reverseLinkedList() {
+        std::vector<int> info;
+        Node* temp = head;
+        while (temp) {
+            info.push_back(temp->data);
+            temp = temp->next;
+        }
+        SinglyLinkedList newlist;
+        for (int i = info.size() - 1; i >= 0 ; i--) {
+            newlist.append(info[i]);
+        }
+        return newlist;
     }
 };
 
@@ -49,8 +59,8 @@ int main() {
     list.printList();
 
     // Student should implement reverseLinkedList()
-    list.reverseLinkedList();
-    list.printList();
+    SinglyLinkedList newlist = list.reverseLinkedList();
+    newlist.printList();
 
     return 0;
 }
