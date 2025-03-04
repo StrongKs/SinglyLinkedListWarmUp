@@ -43,10 +43,12 @@ public:
           temp.push_back(current->data);
           current = current->next;
         }
+        current = head;
         for (int i = temp.size() - 1; i >= 0; i--) {
-          std::cout << temp[i] << " -> ";
+          current->data = temp[i];
+          current = current->next;
         }
-        std::cout << "NULL\nImplement reverseLinkedList()" << std::endl;
+        std::cout << "Implement reverseLinkedList()" << std::endl;
     }
 };
 
