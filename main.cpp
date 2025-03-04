@@ -37,7 +37,21 @@ public:
 
     void reverseLinkedList() {
         // TODO: Students will implement this function
+
         std::cout << "Implement reverseLinkedList()" << std::endl;
+
+        Node* prev = nullptr;
+        Node* curr = head;
+        Node* next = nullptr;
+
+        while (curr) {
+            next = curr->next;  // Store next node
+            curr->next = prev;  // Reverse current node’s pointer
+            prev = curr;        // Move prev to current
+            curr = next;        // Move current to next
+        }
+
+        head = prev;  // Update head to new front
     }
 };
 
@@ -47,6 +61,7 @@ int main() {
     list.append(2);
     list.append(3);
     list.printList();
+
 
     // Student should implement reverseLinkedList()
     list.reverseLinkedList();
