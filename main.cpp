@@ -38,6 +38,16 @@ public:
     void reverseLinkedList() {
         // TODO: Students will implement this function
         std::cout << "Implement reverseLinkedList()" << std::endl;
+        Node* temp = head;
+        Node* prev = nullptr;
+        Node* nextptr = nullptr;
+        while (temp) {
+            nextptr = temp->next;
+            temp->next = prev;
+            prev = temp;
+            temp = nextptr;
+        }
+        head = prev;
     }
 };
 
